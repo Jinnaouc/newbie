@@ -1,0 +1,178 @@
+\documentclass{article}
+
+%-----------------------------------------------------------------
+%package
+
+%geometry
+\usepackage[a4paper]{geometry}%调整页面边距
+\geometry{left=3cm,right=3cm,top=2cm,bottom=3cm}
+\linespread{1.5}
+\usepackage{fancyhdr}%梦幻页眉
+
+%fonts
+\usepackage{fontspec}%字体库
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode,xltxtra}
+\usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{bm} %公式中的粗体字符\boldsymbol
+\usepackage{pifont}
+
+%color
+\usepackage{color,xcolor}
+\definecolor{GREEN}{RGB}{25,180,68}
+\definecolor{YELLOW}{RGB}{255,255,224}
+\definecolor{BLUE}{RGB}{9,148,234}
+\definecolor{RED}{RGB}{139,0,0}
+\definecolor{DRED}{RGB}{128,0,0}
+\usepackage[pagecolor={YELLOW}]{pagecolor}%设置页面底色
+
+%math
+\usepackage{amsmath,amsfonts,amssymb}
+
+%graphics
+\usepackage[americaninductors,europeanresistors]{circuitikz}
+\usepackage{tikz}%可以绘制各种坐标图，方格图
+\usetikzlibrary{positioning,arrows,shadows,shapes,calc,mindmap,trees,backgrounds}  % placements=positioning
+\usepackage{graphicx}%\includegraphics插图命令
+\usepackage{subfigure}  %%图形或表格并排排列
+
+% table
+\usepackage{colortbl,dcolumn}  %% 彩色表格
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs}
+
+% code
+\usepackage{fancyvrb}%漂亮的代码包
+\usepackage{listings}%加入代码
+
+% ref
+\usepackage{hyperref}%扩展参考文献，目录功能和加入超链接。
+
+% title
+\usepackage{titlesec}%花哨的章节标题
+%\titleformat{\paragraph}[runin]{\normalfont\scshape}{\S\,\oldstylenums{\thesection}.}{.5em}{}[.\quad]%从目录可直接打开章节号
+
+
+%tightly-packed lists
+\usepackage{mdwlist}
+\usepackage{verbatim}%comment命令的注释包
+\usepackage{styles/zhfontcfg}%中文包
+\usepackage{styles/iplouclistings}
+\usepackage{styles/iplouccfg}
+
+% head/foot
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyhf{}
+
+%--------------------------------------------------------------------------
+%settings
+\setCJKmainfont{Adobe Kaiti Std} %设置为楷体
+\setCJKmonofont{Adobe Fangsong Std}%仿宋
+%页眉页脚
+\makeatletter
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+\hrule\@height 2.5pt \@width\headwidth\vskip1pt%上面线为1pt粗  
+\hrule\@height 0.5pt\@width\headwidth  %下面0.5pt粗            
+\vskip-2\headrulewidth\vskip-1pt}      %两条线的距离1pt        
+\vspace{6mm}}     %双线与下面正文之间的垂直间距              
+\makeatother         
+                       
+\chead{\color{RED}TEXLIVE2016-INSTALL}%页眉
+\cfoot{\color{RED}July2016}%页脚 中
+\lfoot{\color{RED}Changlin Dinghao}%页脚 左
+\rfoot{\color{RED}$\cdot$\ Page\thepage\ }%页脚 右
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+% graphics
+\graphicspath{{figures/}}
+\tikzset{
+    % Define standard arrow tip
+    >=stealth',
+    % Define style for boxes
+    punkt/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,},
+    % Define style for FlyZhyBall
+    FlyZhyBall/.style={
+      circle,
+      minimum size=6mm,
+      inner sep=0.5pt,
+      ball color=red!50!blue,
+      text=white,},
+    % Define style for FlyZhyRectangle
+    FlyZhyRectangle/.style={
+      rectangle,
+      rounded corners,
+      minimum size=6mm,
+      ball color=red!50!blue,
+      text=white,},
+    % Define style for zhyfly
+    zhyfly/.style={
+      rectangle,
+      rounded corners,
+      minimum size=6mm,
+      ball color=red!25!blue,
+      text=white,},
+    % Define style for new rectangle
+    nrectangle/.style={
+      rectangle,
+      draw=#1!50,
+      fill=#1!20,
+      minimum size=5mm,
+      inner sep=0.1pt,}
+}
+
+% code
+\lstnewenvironment{VHDLcode}[1][]{%
+  \lstset{
+    basicstyle=\footnotesize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+
+% pdf
+\hypersetup{pdfauthor={Haiyong Zheng},%
+            pdftitle={Title},%
+            CJKbookmarks=true,%
+            bookmarksnumbered=true,%
+            bookmarksopen=false,%
+            plainpages=false,%
+            colorlinks=true,%
+            citecolor=green,%
+            filecolor=magenta,%
+            linkcolor=DRED,%red(default)
+            urlcolor=cyan}
+
+\begin{document}
+\title{\vspace{-2em}Latex模板\vspace{0.7em}}
+\author{丁昊}%作者
+\date{\vspace{-0.7em}2016年7月\vspace{-0.7em}}%日期
+\maketitle\thispagestyle{fancy}%在上部添加横线
+\maketitle
+\tableofcontents 
+
+详细版式更改请依照tex文档中使用包的简易说明，对欲修改项目进行查询～
+
+\end{document}
