@@ -1,6 +1,6 @@
 \documentclass{article}
 
-%-----------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %package
 
 %geometry
@@ -14,6 +14,7 @@
 \defaultfontfeatures{Mapping=tex-text}
 \usepackage{xunicode,xltxtra}
 \usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{CJKfntef}
 \usepackage{bm} %公式中的粗体字符\boldsymbol
 \usepackage{pifont}
 
@@ -24,6 +25,7 @@
 \definecolor{BLUE}{RGB}{9,148,234}
 \definecolor{RED}{RGB}{139,0,0}
 \definecolor{DRED}{RGB}{128,0,0}
+\definecolor{GREY}{RGB}{128,128,128}
 \usepackage[pagecolor={YELLOW}]{pagecolor}%设置页面底色
 
 %math
@@ -51,7 +53,30 @@
 
 % title
 \usepackage{titlesec}%花哨的章节标题
-%\titleformat{\paragraph}[runin]{\normalfont\scshape}{\S\,\oldstylenums{\thesection}.}{.5em}{}[.\quad]%从目录可直接打开章节号
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother%titlesec旧版本无编号问题
+
+%\titleformat{\section}[frame]{\normalfont}{\filright\footnotesize\enspace SECTION \thesection\enspace}{8pt}{\Large\bfseries\filcenter}
+
+\titleformat
+{\section} % command
+[display] % shape
+{\bfseries\Large} % format
+{第\ \thesection 章\ } % label
+{0.3ex} % sep
+{
+    \rule{\textwidth}{2pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-2ex}%
+\rule{\textwidth}{1pt}
+] % after-code
 
 
 %tightly-packed lists
@@ -66,7 +91,9 @@
 \pagestyle{fancy}
 \fancyhf{}
 
-%--------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %settings
 \setCJKmainfont{Adobe Kaiti Std} %设置为楷体
 \setCJKmonofont{Adobe Fangsong Std}%仿宋
@@ -79,11 +106,11 @@
 \vspace{6mm}}     %双线与下面正文之间的垂直间距              
 \makeatother         
                        
-\chead{\color{RED}TEXLIVE2016-INSTALL}%页眉
-\cfoot{\color{RED}July2016}%页脚 中
-\lfoot{\color{RED}Changlin Dinghao}%页脚 左
-\rfoot{\color{RED}$\cdot$\ Page\thepage\ }%页脚 右
-\renewcommand{\headrulewidth}{0.4pt}
+\chead{\color{GREY}TEXLIVE2016-INSTALL}%页眉
+\cfoot{\color{GREY}July2016}%页脚 中
+\lfoot{\color{GREY}Changlin Dinghao}%页脚 左
+\rfoot{\color{GREY}$\cdot$\ Page\thepage\ }%页脚 右
+%\renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
 
@@ -151,7 +178,34 @@
     numberblanklines=false,numbersep=7pt,%
     language=VHDL%
     }\lstset{#1}}{}
-
+\lstnewenvironment{VHDLmiddle}[1][]{%
+  \lstset{
+    basicstyle=\scriptsize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLsmall}[1][]{%
+  \lstset{
+    basicstyle=\tiny\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
 % pdf
 \hypersetup{pdfauthor={Haiyong Zheng},%
             pdftitle={Title},%
@@ -164,7 +218,23 @@
             filecolor=magenta,%
             linkcolor=DRED,%red(default)
             urlcolor=cyan}
+\newcommand\titlebar{%
+\tikz[baseline,trim left=3.1cm,trim right=3cm] {
+    \fill [cyan!25] (2.5cm,-1ex) rectangle (\textwidth+3.1cm,2.5ex);
+    \node [
+        fill=cyan!60!white,
+        anchor= base east,
+        rounded rectangle,
+        minimum height=3.5ex] at (3cm,0) {
+        \textbf{\thesection.}
+    };
+}%
+}
 
+\usepackage{styles/lshort}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{\vspace{-2em}Latex模板\vspace{0.7em}}
 \author{丁昊}%作者
@@ -172,7 +242,21 @@
 \maketitle\thispagestyle{fancy}%在上部添加横线
 \maketitle
 \tableofcontents 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{\LaTeX 模板}
+
+\subsection{Testing}
+
+\subsubsection{testing}
+
+\begin{example}
+\LaTeX-using
+\end{example}
+
 
 详细版式更改请依照tex文档中使用包的简易说明，对欲修改项目进行查询～
+
+P.S. 欢迎更新～
 
 \end{document}
