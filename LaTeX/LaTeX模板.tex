@@ -5,7 +5,7 @@
 
 %geometry
 \usepackage[a4paper]{geometry}%调整页面边距
-\geometry{left=3cm,right=3cm,top=2cm,bottom=3cm}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 \linespread{1.5}
 \usepackage{fancyhdr}%梦幻页眉
 
@@ -60,7 +60,6 @@
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
 \makeatother%titlesec旧版本无编号问题
 
-%\titleformat{\section}[frame]{\normalfont}{\filright\footnotesize\enspace SECTION \thesection\enspace}{8pt}{\Large\bfseries\filcenter}
 
 \titleformat
 {\section} % command
@@ -69,7 +68,7 @@
 {第\ \thesection 章\ } % label
 {0.3ex} % sep
 {
-    \rule{\textwidth}{2pt}
+    \rule{\textwidth}{1pt}
     \vspace{1ex}
     \centering
 } % before-code
@@ -92,27 +91,23 @@
 \fancyhf{}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %settings
 \setCJKmainfont{Adobe Kaiti Std} %设置为楷体
 \setCJKmonofont{Adobe Fangsong Std}%仿宋
 %页眉页脚
+
+
 \makeatletter
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
-\hrule\@height 2.5pt \@width\headwidth\vskip1pt%上面线为1pt粗  
+\hrule\@height 2.5pt \@width\headwidth\vskip1pt%上面线为2.5pt粗  
 \hrule\@height 0.5pt\@width\headwidth  %下面0.5pt粗            
-\vskip-2\headrulewidth\vskip-1pt}      %两条线的距离1pt        
+\vskip-2\headrulewidth\vskip-1pt}      %两条线的距离        
 \vspace{6mm}}     %双线与下面正文之间的垂直间距              
 \makeatother         
-                       
-\chead{\color{GREY}TEXLIVE2016-INSTALL}%页眉
-\cfoot{\color{GREY}July2016}%页脚 中
-\lfoot{\color{GREY}Changlin Dinghao}%页脚 左
-\rfoot{\color{GREY}$\cdot$\ Page\thepage\ }%页脚 右
-%\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
+ 
 
 % graphics
 \graphicspath{{figures/}}
@@ -174,7 +169,7 @@
     backgroundcolor=\color{yellow!20},%
     xleftmargin=1.2\fboxsep,%
     xrightmargin=.7\fboxsep,%
-    numbers=left,numberstyle=\tiny\color{blue},%
+    numberstyle=\tiny\color{blue},%
     numberblanklines=false,numbersep=7pt,%
     language=VHDL%
     }\lstset{#1}}{}
@@ -230,9 +225,15 @@
     };
 }%
 }
+                      
+\chead{\color{GREY}LATEX-模板}%页眉
+\cfoot{\color{GREY}Augeust 2016}%页脚 中
+\lfoot{\color{GREY}DingHao}%页脚 左
+\rfoot{\color{GREY}$\cdot$\ Page \thepage\ }%页脚 右
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 \usepackage{styles/lshort}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -242,6 +243,12 @@
 \maketitle\thispagestyle{fancy}%在上部添加横线
 \maketitle
 \tableofcontents 
+\newpage
+
+\begin{abstract}
+This is an abstract~
+\end{abstract}
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{\LaTeX 模板}

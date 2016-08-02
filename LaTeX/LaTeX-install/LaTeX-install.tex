@@ -1,11 +1,11 @@
 \documentclass{article}
 
-%-----------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %package
 
 %geometry
 \usepackage[a4paper]{geometry}%调整页面边距
-\geometry{left=3cm,right=3cm,top=2cm,bottom=3cm}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 \linespread{1.5}
 \usepackage{fancyhdr}%梦幻页眉
 
@@ -14,6 +14,7 @@
 \defaultfontfeatures{Mapping=tex-text}
 \usepackage{xunicode,xltxtra}
 \usepackage[BoldFont,SlantFont,CJKnumber,CJKchecksingle]{xeCJK}  % \CJKnumber{12345}: 一万二千三百四十五
+\usepackage{CJKfntef}
 \usepackage{bm} %公式中的粗体字符\boldsymbol
 \usepackage{pifont}
 
@@ -24,6 +25,7 @@
 \definecolor{BLUE}{RGB}{9,148,234}
 \definecolor{RED}{RGB}{139,0,0}
 \definecolor{DRED}{RGB}{128,0,0}
+\definecolor{GREY}{RGB}{128,128,128}
 \usepackage[pagecolor={YELLOW}]{pagecolor}%设置页面底色
 
 %math
@@ -51,7 +53,29 @@
 
 % title
 \usepackage{titlesec}%花哨的章节标题
-%\titleformat{\paragraph}[runin]{\normalfont\scshape}{\S\,\oldstylenums{\thesection}.}{.5em}{}[.\quad]%从目录可直接打开章节号
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother%titlesec旧版本无编号问题
+
+
+\titleformat
+{\section} % command
+[display] % shape
+{\bfseries\Large} % format
+{第\ \thesection 章\ } % label
+{0.3ex} % sep
+{
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-2ex}%
+\rule{\textwidth}{1pt}
+] % after-code
 
 
 %tightly-packed lists
@@ -66,26 +90,24 @@
 \pagestyle{fancy}
 \fancyhf{}
 
-%--------------------------------------------------------------------------
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %settings
 \setCJKmainfont{Adobe Kaiti Std} %设置为楷体
 \setCJKmonofont{Adobe Fangsong Std}%仿宋
 %页眉页脚
+
+
 \makeatletter
 \def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
-\hrule\@height 2.5pt \@width\headwidth\vskip1pt%上面线为1pt粗  
+\hrule\@height 2.5pt \@width\headwidth\vskip1pt%上面线为2.5pt粗  
 \hrule\@height 0.5pt\@width\headwidth  %下面0.5pt粗            
-\vskip-2\headrulewidth\vskip-1pt}      %两条线的距离1pt        
+\vskip-2\headrulewidth\vskip-1pt}      %两条线的距离        
 \vspace{6mm}}     %双线与下面正文之间的垂直间距              
 \makeatother         
-                       
-\chead{\color{RED}TEXLIVE2016-INSTALL}%页眉
-\cfoot{\color{RED}July2016}%页脚 中
-\lfoot{\color{RED}Changlin Dinghao}%页脚 左
-\rfoot{\color{RED}$\cdot$\ Page\thepage\ }%页脚 右
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
+ 
 
 % graphics
 \graphicspath{{figures/}}
@@ -147,11 +169,38 @@
     backgroundcolor=\color{yellow!20},%
     xleftmargin=1.2\fboxsep,%
     xrightmargin=.7\fboxsep,%
+    numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
+\lstnewenvironment{VHDLmiddle}[1][]{%
+  \lstset{
+    basicstyle=\scriptsize\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
     numbers=left,numberstyle=\tiny\color{blue},%
     numberblanklines=false,numbersep=7pt,%
     language=VHDL%
     }\lstset{#1}}{}
-
+\lstnewenvironment{VHDLsmall}[1][]{%
+  \lstset{
+    basicstyle=\tiny\ttfamily\color{black},%
+    columns=flexible,%
+    framexleftmargin=.7mm,frame=shadowbox,%
+    rulesepcolor=\color{blue},%
+%    frame=single,%
+    backgroundcolor=\color{yellow!20},%
+    xleftmargin=1.2\fboxsep,%
+    xrightmargin=.7\fboxsep,%
+    numbers=left,numberstyle=\tiny\color{blue},%
+    numberblanklines=false,numbersep=7pt,%
+    language=VHDL%
+    }\lstset{#1}}{}
 % pdf
 \hypersetup{pdfauthor={Haiyong Zheng},%
             pdftitle={Title},%
@@ -164,7 +213,29 @@
             filecolor=magenta,%
             linkcolor=DRED,%red(default)
             urlcolor=cyan}
+\newcommand\titlebar{%
+\tikz[baseline,trim left=3.1cm,trim right=3cm] {
+    \fill [cyan!25] (2.5cm,-1ex) rectangle (\textwidth+3.1cm,2.5ex);
+    \node [
+        fill=cyan!60!white,
+        anchor= base east,
+        rounded rectangle,
+        minimum height=3.5ex] at (3cm,0) {
+        \textbf{\thesection.}
+    };
+}%
+}
+                      
+\chead{\color{GREY}LATEX-INSTALL}%页眉
+\cfoot{\color{GREY}Augeust 2016}%页脚 中
+\lfoot{\color{GREY}Changlin,Dinghao}%页脚 左
+\rfoot{\color{GREY}$\cdot$\ Page \thepage\ }%页脚 右
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
+\usepackage{styles/lshort}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \title{\vspace{-2em}Ubuntu 16.04下安装TexLive2016并配置中文字体\vspace{0.7em}}%大标题
 \author{常琳,丁昊}%作者
@@ -172,10 +243,9 @@
 \maketitle\thispagestyle{fancy}%在上部添加横线
 \maketitle
 \tableofcontents 
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{安装TexLive2016}
 
