@@ -249,7 +249,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
-这篇文档作者写的虽然是我的名字，事实上却是因为我很难把那么多名字统统写进来。首先，本文档后半部分内容主要来源于孙雪，戴嘉伦两位师兄师姐和郑海永老师的《\LaTeX 简短使用手册》。版式的设置部分参照了常林师姐的文档模板，并采取了崔金娜、谭林和王超的很多建议。写这篇文档的过程对我也是个挑战，郑老师帮我解决了一系列编写中遇到的问题。且本文的绝大部分实际内容来自于官方编写的《一份不太简短的\LaTeX2介绍》(后文简称为《介绍》)，所以说我实际上是做了大量整理工作而非原创性工作。\par
+这篇文档作者写的虽然是我的名字，事实上却是因为我很难把那么多名字统统写进来。首先，本文档后半部分内容主要来源于孙雪，戴嘉伦两位师兄师姐和郑海永老师的《\LaTeX 简短使用手册》。版式的设置部分参照了常林师姐的文档模板，并采取了崔金娜、谭林和王超的很多建议。写这篇文档的过程对我也是个挑战，郑老师帮我解决了一系列编写中遇到的问题。且本文的绝大部分实际内容来自于官方编写的《一份不太简短的\LaTeXe 介绍》(后文简称为《介绍》)，所以说我实际上是做了大量整理工作而非原创性工作。\par
 但是到目前为止，上面提到的这些及网上的文档要不太长，要不难以满足翻遍电脑找不到\LaTeX .exe在哪的初学级菜鸟的需求，我尽我最大的努力给予一些我在那个阶段最想要知道的一些信息，尽量的总结至一天可以学会的量，而不再需要你们将一整天一整天的时间耗费在百度和谷歌上。\par
 最后，我个人的水平着实有限，希望这份文档可以被不断的修改和更新，并以更好的样子服务更多的师弟师妹。
 \end{abstract}
@@ -275,7 +275,7 @@
 \item 说了这么多,接下来讲讲\LaTeX 相较Word的优势。首先是文档自动排版功能,用户只能使用结构化的方式写作,导致输出的PDF结构树清晰。自定义宏包和公式的功能使得\LaTeX 无限的强大,有能力输出任何你想得到的排版方式。数学公式自动编号与代码的便利编写对我们专业的好处更不必说。网上看到一个很有意思的总结贴在这里:不会用word得到很丑的文档,不会用\LaTeX 没有文档;会用word得到文档，会用\LaTeX 得到漂亮的文档;用的好,word和\LaTeX 都可以得到牛逼的文档。
 \end{itemize}
 \newpage
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{快速上手}
 
 \subsection{创建与使用}
@@ -317,7 +317,7 @@
 \end{verbatim}
 
 
-6.编译该文件
+6.编译该文件【请重复这个步骤2到3次，因为\LaTeX 往往需要2到3次编译才能正确呈现目录】
 \begin{verbatim}
        xelatex test.tex    [使用这个命令要在.tex文件所在的目录下哦~]
 \end{verbatim}
@@ -373,71 +373,77 @@
 以上只是我认为较为重要的，欢迎补充。想要学习更多的宏包设置知识，不要去看类似宏包大全的网页，但需要你对照某个文档的宏包部分，针对想弄懂的宏包去search,并尽量自己一点一点的试验不同设置下的输出区别，本篇文档的该部分作了一些不太完整的说明，希望能够帮到你。
 
 \subsubsection{正文}
-\LaTeX 的正文必须写在$\backslash$begin\{document\}和$\backslash$end\{document\}之间，
+\LaTeX 的正文必须写在$\backslash$begin\{document\}和$\backslash$end\{document\}之间。一般来说，一篇article的组成无外乎标题、作者、日期、目录、摘要、分章节说明等部分。下面逐一列举了语句写法。\par
+\begin{itemize}
+\item 标题：\qquad \qquad $\backslash$title\{标题名称\}
+\item 作者：\qquad \qquad $\backslash$author\{作者\}
+\item 日期：\qquad \qquad $\backslash$data\{2016年7月\}
+\item 添加标题：\qquad $\backslash$maketitle
+\item 添加目录：\qquad $\backslash$tableofcontents
+\item 摘要：\qquad \qquad $\backslash$begin\{abstract\} 摘要内容 $\backslash$end\{abstract\}
+\item 章节：\qquad \qquad $\backslash$section\{章节\} $\backslash$subsection\{次级章节\} $\backslash$subsubsection\{三级章节\}
+\item 段落：\qquad \qquad $\backslash$paragraph\{段落\} $\backslash$subparagraph\{次级段落\}
+\item 分节：\qquad \qquad $\backslash$part\{分块而不影响章节编号\}
+\item 大章节：\qquad \quad $\backslash$chapter\{仅使用于report和book文档\}
 
-\subsection{\LaTeX{}源文件}
+\end{itemize}
+请不要着急，以上只是对正文部分最主要成分的列举，详细语句规则往下看。
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\LaTeX 书写规则与常用命令}
 
-\subsubsection{空白距离}
-
+\part{书写规则}
+\subsection{文章分区与断行}
+\begin{enumerate}%空格
+\item 多个连续空格被视为一个空格，一个空白行（两个回车）表示另起一段，多个连续空行被视为一个空行：
 \begin{example}
-\LaTeX-using
+It does not matter whether you enter one
+ or several       spaces after a word.
+
+
+An empty line starts a new paragraph.
 \end{example}
 
-空多个空格 与   一个空格相同;%空多个空格跟一个空格效果相同
+\item \LaTeX 的几个换行命令：[\textsl{这里这个展示环境没有做好，事实上前两个另起一段的命令开头是会产生两个缩进的}]%换行
+\begin{example}
+输入\par 或者两个回车
 
-空多行
+可以另起一段；输入\\或者
+\newline 可以强制断行（不缩进）；
+输入\\*表示强制断行且禁止分页；
+$\backslash$newpage 表示另起一页
+\end{example}
 
-
-与空一行效果相同  %空多行与空一行效果相同
-
-
-\subsubsection{特殊字符}
-
-\# \$ \% \^ \& \_ \{ \} %特殊字符
-
-\subsubsection{\LaTeX{}命令}
-
-\TeX{} I 命令后加空格 %命令后加空格
-
-\textsl{斜体} %设置斜体
-
-新的一行 \newline 新的一行
-
-\subsubsection{注释}
-
-短注释 % 短注释
+\item 百分号后的本句内容被视为注释，不在PDF显示，长注释可使用comment环境：
+\begin{example}
+%短注释
 \begin{comment}
-balala
-\end{comment}   %较长注释采用comment环境
+长注释
+\end{comment}  
+\end{example}
+\end{enumerate}
+\begin{enumerate}
+\subsection{特殊字符}
 
-\section{文本排版}
+\item \LaTeX 中有许多特殊字符不能够直接输出，下面几个常用的保留字符可以通过加反斜杠输出，其他特殊字符可以通过特殊命令得到%特殊字符
+\begin{example}
+\# \$ \% \^ \& \_ \{ \} $\backslash$
+\end{example}
 
-\subsection{断行和分页}
 
-\subsubsection{对齐段落}
-
-另起一行而不是另起一段\\  %另起一行而不是另起一段
-在强制断行后还禁止分页\\* %在强制断行后还禁止分页
-另起一页\newpage %另起一页
-
-\subsection{内置字符串}
-
-\today 当前日期
+\item 内置字符串
+\begin{example}
+\today 
 
 \TeX
 
 \LaTeX
 
 \LaTeXe
+\end{example}
 
-\subsection{特殊字符和符号}
-
-\subsubsection{引号}
-
-``前引号 \qquad"后引号 \qquad‘’单引号
-
-\subsubsection{破折号和连字号}
-
+\item 横杠
+\begin{example}
 daughter-in-law 连字号
 
 pages 13--67 短破折号
@@ -445,107 +451,123 @@ pages 13--67 短破折号
 yes---or no? 长破折号
 
 $-1$ 减号
+\end{example}
 
-\subsubsection{波浪号}
-
+\item 波浪号
+\begin{example}
 http://rich.edu/$\sim$demo
+\end{example}
 
-\subsubsection{度的符号}
-
+\item 度的符号
+\begin{example}
 $-30\,^{\circ}\mathrm{C}$
+\end{example}
 
-\subsubsection{欧元符号}
-
+\item 欧元符号
+\begin{example}
 \texteuro
+\end{example}
 
-\subsubsection{省略号}
-
+\item 省略号
+\begin{example}
 \ldots
+\end{example}
 
-\subsubsection{连字符}
+\item 禁止断词
+\begin{example}
+shelf\mbox{}ful  这个单词不会被断开
+加连字符到下一行
+\end{example}
 
-shelf\mbox{}ful  禁止连字符
-
-\subsubsection{注音符号和特殊字符}
-
+\item 注音符号和特殊字符
+\begin{example}
 H\^otel, na\"\i ve\\
 sm\o rrebr\o d, !'Se\ norita!\\
 Sch\"onbrunner Schlo\ss{}
 Stra\ss e
+\end{example}
 
-\subsection{单词间隔}
+\end{enumerate}
 
-句号后加大写字母不空格. M
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{常用命令}
+\subsection{格式}
+\begin{enumerate}
+\item 命令后加空格需要一对大括号
+\begin{example}
+\TeX{} I 
+\end{example}
 
-句号后空格加大写字母.M
+\item 设置斜体
+\begin{example}
+\textsl{斜体} 
+\end{example}
 
-\subsection{标题、章、节}
+\item 脚注
+\begin{example}
+Footnotes\footnote{This is a footnote.}
+ are often used by people using \LaTeX.
+\end{example}
 
-\paragraph{段落}
-出版的第一步就是作者把打好字的手稿交给出版公司,然后由图书设计者来决定整个文档的布局。图书设计者会把他的排版说明写进作者的手稿里,再交给排版者,由排版者根据这些说明来排版全书。
-
-\subparagraph{子段落}
-
-排版设计是一门工艺。不熟练的作者认为书籍设计仅仅是个美学问题,因而经常会犯严重的格式错误。
-
-\subsection{脚注}
-Footnotes\footnote{This is a footnote.} are often used by people using \LaTeX.
-
-\subsection{强调}
-
+\item 强调
+\begin{example}
 \underline{下划线}
 
-\emph{在印刷的书中用斜体字体排印要强调的单词}
+\emph{印刷品用斜体字体排印要强调的单词}
+\end{example}
+\end{enumerate}
 
-\subsection{环境}
+\part{环境}
+\subsection{排版}
 
-\subsubsection{Itemize、Enumerate、Description}
-
-\flushleft
+\begin{enumerate}
+\item 编号：Itemize、Enumerate、Description用法
+\begin{example}
 \begin{enumerate} %条目
-\item You can mix the list environments \cite{1:article} to your taste:
+\item You can mix the list environments 
+ to your taste:
 \begin{itemize}
 \item But it might start to look silly.
 \item[-] With a dash.
 \end{itemize}
 \item Therefore remember:
 \begin{description}
-\item[Stupid] things will not become smart because they are in a list.
-\item[Smart] things, though, can be presented beautifully in a list.
+\item[Stupid] things will not become 
+smart because they are in a list.
+\item[Smart] things, though, can be 
+presented beautifully in a list.
 \end{description}
 \end{enumerate}
+\end{example}
 
-\subsubsection{左对齐、右对齐和居中}
-
+\item 对齐
+\begin{example}
 \begin{flushleft}
 左对齐
 \end{flushleft}
-
 \begin{flushright}
-左对齐
+右对齐
 \end{flushright}
-
 \begin{center}
 居中对齐
 \end{center}
+\end{example}
 
-\subsubsection{引用、语录和韵文}
-
+\subsection{插入}
+\item 引用、语录和韵文
+\begin{example}
 一个例子：
 \begin{quote}
-按照顺序阅读这些章节是很重要的这本书毕竟不长。一定要认真阅读例子,因为在贯穿全篇的各种例子里包含了很多的信息。
-
+一定要认真阅读例子,因为在贯穿全篇的各种
+例子里包含了很多的信息。
 \end{quote}
 例子结束
+\end{example}
 
-\subsubsection{摘要}
-
-\begin{abstract}
-The abstract
-\end{abstract}
-
-\subsubsection{表格}
-
+\item 表格
+\begin{itemize}
+	\item 代码
+\begin{verbatim}
 \begin{table}[!htp] %插表
 \label{tab:1}
 \centering
@@ -563,9 +585,31 @@ The abstract
 \caption{一个表格}
 \end{table}
 通过表\ref{tab:1}，我们可以得出\ldots
+\end{verbatim}
+	\item 输出\\
+\begin{table}[!htp] %插表
+\label{tab:1}
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+0.5&0&0&0\\
+\hline
+0&1&0&0\\
+\hline
+0&0.25&0.75&0\\
+\hline
+0&0&0&1\\
+\hline
+\end{tabular}  
+\caption{一个表格}
+\end{table}
+通过表\ref{tab:1}，我们可以得出\ldots
+\end{itemize}
 
-\subsubsection{图}
-
+\item 插图
+\begin{itemize}
+	\item 代码
+\begin{verbatim}
 \begin{figure}[!htb] %插图
 \centering
 \includegraphics[width=0.5\textwidth]{latex_figure.jpeg}
@@ -573,100 +617,174 @@ The abstract
 \label{fig:1}
 \end{figure}
 通过图\ref{fig:1}，我们可以得出\ldots
+\end{verbatim}
+	\item 输出\\
+\begin{figure}[!htb] %插图
+\centering
+\includegraphics[width=0.5\textwidth]{latex_figure.jpeg}
+\caption{\LaTeX{}插图指南}
+\label{fig:1}
+\end{figure}
+通过图\ref{fig:1}，我们可以得出\ldots
+\end{itemize}
 
-\subsubsection{参考文献}
+\end{enumerate}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-BibTeX 模板格式分为好几类：article\cite{1:article}, book\cite{2:book}, misc\cite{3:misc}等等 
+
 
 \section{数学公式}
 
-\subsection{综述}
-
-\subsubsection{行间式样}
-
-和的平方：$c^{2}=a^{2}+b^{2}$
-
-心型：\begin{math}\heartsuit\end{math}
-
+\subsection{行间式样}
+\begin{itemize}
+\item 和的平方
+\begin{example}
+$c^{2}=a^{2}+b^{2}$
+\end{example}
+\item 心型
+\begin{example}
+\begin{math}\heartsuit\end{math}
+\end{example}
+\item 极限
+\begin{example}
 $\lim_{n \to \infty}\sum_{k=1}^n \frac{1}{k^2} = \frac{\pi^2}{6}$
+\end{example}
+\end{itemize}
 
-\subsubsection{显示式样}
-
-求$a$与$b$的和：
-\begin{displaymath}a+b=c\end{displaymath}
-
-和的平方：\[c^{2}=a^{2}+b^{2}\]
-
+\subsection{显示式样}
+\begin{itemize}
+\item 求$a$与$b$的和
+\begin{example}
+\begin{displaymath}
+a+b=c
+\end{displaymath}
+\end{example}
+\item 和的平方
+\begin{example}
+\[c^{2}=a^{2}+b^{2}\]
+\end{example}
+\item 极限
+\begin{example}
 \begin{displaymath}
 \lim_{n \to \infty}
 \sum_{k=1}^n \frac{1}{k^2}
 = \frac{\pi^2}{6}
 \end{displaymath}
+\end{example}
+\end{itemize}
 
-\subsubsection{公式编号}
-
+\subsection{公式编号}
+\begin{example}
 \begin{equation} \label{eq:eps}
 \epsilon > 0
 \end{equation}
+\end{example}
 从公式(\ref{eq:eps}), 我们得出\ldots
 
 \subsection{数学模式的群组}
-
+\begin{example}
 \begin{equation}
 a^x+y \neq a^{x+y}
 \end{equation}
+\end{example}
 
 \subsection{数学公式的基本元素}
 
-\begin{description}
-\item[希腊字母]
-$\alpha, \beta, \gamma, \Gamma, \Delta, \lambda, \xi, \pi, \mu, \Phi, \Omega$
+\begin{enumerate}
 
-\item[指数和下标]$a_{1}$, $e^{x^2}\neq {e^x}^2$
+\item 希腊字母
 
-\item[平方根] $\sqrt{x}$, $\sqrt[3]{2}$ 
-
-\item[水平线]$\overline{m+n}$, $\underline{m+n}$
-
-\item[水平括号] $\underbrace{a+b+\cdots+z}_{26}$
-
-\item[导数]$y=x^{2}\qquad y’=2x\qquad y’’=2$
-
-\item[乘号]$x_{1}\cdot x_{2}$
-
-\item[log等类的函数名通常用直立字体]
-\begin{flushleft}$\arccos, \cos, \csc, \exp, \ker, \limsup,\arcsin, \cosh, \deg, \gcd, \lg, \ln, \arctan$\\$ \cot \det, \hom, \lim, \log,
-\arg, \coth, \dim, \inf, \liminf, \max, \sinh, \sup, \tan$\\$ \tanh, \min, \Pr,
-\sec, \sin$ 如极限：$\lim_{x \rightarrow 0}\frac{\sin x}{x}=1$
+\begin{example}
+$\alpha, \beta, \gamma, \Gamma, \Delta, 
+\lambda, \xi, \pi, \mu, \Phi, \Omega$
+\end{example}
+\newpage
+\item 指数和下标
+\begin{example}
+$a_{1}$, $e^{x^2}\neq {e^x}^2$
+\end{example}
+\item 平方根
+\begin{example}
+$\sqrt{x}$, $\sqrt[3]{2}$ 
+\end{example}
+\item 水平线
+\begin{example}
+$\overline{m+n}$, $\underline{m+n}$
+\end{example}
+\item 水平括号 
+\begin{example}
+$\underbrace{a+b+\cdots+z}_{26}$
+\end{example}
+\item 导数
+\begin{example}
+$y=x^{2}\qquad y’=2x\qquad y’’=2$
+\end{example}
+\item 乘号
+\begin{example}
+$x_{1}\cdot x_{2}$
+\end{example}
+\item log等类的函数名通常用直立字体
+\begin{example}
+\begin{flushleft}$\arccos, \cos, \csc, 
+\exp, \ker, \limsup,\arcsin, \cosh,$\\$
+ \deg, \gcd, \lg, \ln, \arctan \cot 
+\det, \hom, \lim, \log,\arg,$\\$ \coth, 
+\dim, \inf, \liminf, \max, \sinh, \sup, 
+\tan \tanh, $\\$\min, \Pr,\sec, \sin$ 
+如极限：$\lim_{x \rightarrow 
+0}\frac{\sin x}{x}=1$
 \end{flushleft}
+\end{example}
+\item 取模函数
+\begin{example}
+$a\bmod b$, $x\equiv a \pmod{b}$
+\end{example}
+\item 分式
+\begin{example}
+$1\frac{1}{2}$, $\frac{x^2}{k+1}$, $1/2$
+\end{example}
+\item 二项式系数
+\begin{example}
+$\binom{n}{k},\mathrm{C}_n^k$
+\end{example}
+\item 符号堆积
+\begin{example}
+$\stackrel{!}{=}$
+\end{example}
+\item 积分号，累加，累乘
+\begin{example}
+$\int_{0}^{\frac{\pi}{2}} \qquad 
+\sum_{i=1}^{n} \qquad \prod_\epsilon$
+\end{example}
+\item 括号
 
-\item[取模函数]$a\bmod b$, $x\equiv a \pmod{b}$
-
-\item[分式]$1\frac{1}{2}$, $\frac{x^2}{k+1}$, $1/2$
-
-\item[二项式系数]$\binom{n}{k},\mathrm{C}_n^k$
-
-\item[符号堆积]$\stackrel{!}{=}$
-
-\item[积分号，累加，累乘]$\int_{0}^{\frac{\pi}{2}} \qquad \sum_{i=1}^{n} \qquad \prod_\epsilon$
-
-\item[括号]
 \begin{itemize}
 \item 自动调整括号尺寸 
+\begin{example}
 \begin{displaymath}
 1 + \left( \frac{1}{ 1-x^{2} }
 \right) ^3
 \end{displaymath}
+\end{example}
 \item 指定括号尺寸
+\begin{example}
 $\big(\Big(\bigg(\Bigg($\quad$\big\}\Big\}\bigg\}\Bigg\}$\quad
 $\big\|\Big\|\bigg\|\Bigg\|$
+\end{example}
 \end{itemize}
 
-\item[竖直点列，对角线点列]$\vdots\quad \ddots$
-\end{description}
+\item 竖直点列，对角线点列
+\begin{example}
+$\vdots\quad \ddots$
+\end{example}
+\end{enumerate}
 
 \subsection{垂直取齐}
 
+\begin{enumerate}
+\item 垂直取齐的方法，主要是在欲取齐的地方加两个相邻的反斜杠。
+\begin{example}
 \begin{displaymath}
 \mathbf{X} =
 \left( \begin{array}{ccc}
@@ -675,7 +793,9 @@ x_{21} & x_{22} & \ldots \\
 \vdots & \vdots & \ddots
 \end{array} \right)
 \end{displaymath}
+\end{example}
 
+\begin{example}
 \begin{displaymath}
 y = \left\{ \begin{array}{ll}
 a & \textrm{if $d>c$}\\
@@ -683,7 +803,9 @@ b+x & \textrm{in the morning}\\
 l & \textrm{all day long}
 \end{array} \right.
 \end{displaymath}
+\end{example}
 
+\begin{example}
 \begin{displaymath}
 \left(\begin{array}{c|c}
 1 & 2 \\
@@ -691,8 +813,10 @@ l & \textrm{all day long}
 3 & 4
 \end{array}\right)
 \end{displaymath}
+\end{example}
 
-等号取齐：
+\item 等号取齐：
+\begin{example}
 \begin{eqnarray}
 f(x) & = & \cos x
 \\
@@ -701,8 +825,10 @@ f’(x) & = & -\sin x
 \int_{0}^{x} f(y)dy &
 = & \sin x
 \end{eqnarray}
+\end{example}
 
-长等式指定在哪断和如何缩进：
+\item 长等式指定在哪断和如何缩进：
+\begin{example}
 {\setlength\arraycolsep{2pt}
 \begin{eqnarray}
 \sin x & = & x -\frac{x^{3}}{3!}
@@ -710,7 +836,9 @@ f’(x) & = & -\sin x
 \nonumber\\
 && {}-\frac{x^{7}}{7!}+{}\cdots
 \end{eqnarray}}
+\end{example}
 
+\begin{example}
 \begin{eqnarray}
 \lefteqn{ \cos x = 1
 -\frac{x^{2}}{2!} +{} }
@@ -718,25 +846,31 @@ f’(x) & = & -\sin x
 & & {}+\frac{x^{4}}{4!}
 -\frac{x^{6}}{6!}+{}\cdots
 \end{eqnarray}
+\end{example}
+\end{enumerate}
 
 \subsection{虚位}
+\begin{example}
 
-${}^{12}_{\phantom{1}6}\textrm{C} \qquad {}^{12}_{6}\textrm{C} $
+${}^{12}_{\phantom{1}6}\textrm{C} 
+\qquad {}^{12}_{6}\textrm{C} $
 
-$\Gamma_{ij}^{\phantom{ij}k} \qquad \Gamma_{ij}^{k} $ 
+$\Gamma_{ij}^{\phantom{ij}k} 
+\qquad \Gamma_{ij}^{k} $ 
+\end{example}
 
 \subsection{定理、定律}
 
+\begin{example}
 \newtheorem{law}{Law} %定理
 \begin{law}\label{law:t} 
 This is my interesting theorem.
 \end{law}
 通过定理\ref{law:t}，我们得出\ldots
-
 \begin{proof}
 \[E=mc^2\]
 \end{proof}
-
+\end{example}
 \subsection{粗体符号}
 
 \begin{displaymath}
