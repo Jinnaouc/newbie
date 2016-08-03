@@ -87,7 +87,7 @@
 
 % head/foot
 \setlength{\headheight}{15pt}
-\pagestyle{fancy}
+
 \fancyhf{}
 
 
@@ -225,10 +225,31 @@
     };
 }%
 }
+
+%设置标题页面
+
+\newcommand*{\titleGM}{\begingroup % 新命令：添加标题页
+\hbox{ % 水平盒子
+\hspace*{0.2\textwidth} % 左边空白
+\rule{1pt}{\textheight\color{GREY}} % 竖线
+\hspace*{0.05\textwidth} % 竖线和文本距离
+\parbox[b]{0.75\textwidth}{ % 文本最大右边距
+
+{\noindent\Huge\bfseries Ubuntu 16.04下安装 \\TexLive2016 \\[0.5\baselineskip] 并配置中文字体}\\[2\baselineskip] % 题目
+{\large \textit{一份\LaTeX 安装手册}}\\[4\baselineskip] % 标签或描述
+{\Large \textsc{丁昊}}\\ % 作者
+
+\vspace{0.5\textheight} % 题目区域和作者间距
+{\noindent Augest 2016 }\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
+
+
                       
 \chead{\color{GREY}LATEX-INSTALL}%页眉
 \cfoot{\color{GREY}Augeust 2016}%页脚 中
-\lfoot{\color{GREY}Changlin,Dinghao}%页脚 左
+\lfoot{\color{GREY}ChangLin,DingHao}%页脚 左
 \rfoot{\color{GREY}$\cdot$\ Page \thepage\ }%页脚 右
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -237,13 +258,24 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{\vspace{-2em}Ubuntu 16.04下安装TexLive2016并配置中文字体\vspace{0.7em}}%大标题
-\author{常琳,丁昊}%作者
-\date{\vspace{-0.7em}2016年7月\vspace{-0.7em}}%日期
-\maketitle\thispagestyle{fancy}%在上部添加横线
-\maketitle
+
+\titleGM\thispagestyle{empty}
+
+\pagenumbering{roman}
+
+\setcounter{page}{0}
+
+\newpage
+
 \tableofcontents 
 \newpage
+
+\pagestyle{fancy}
+
+\pagenumbering{arabic}
+\newpage
+                      
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

@@ -5,7 +5,7 @@
 
 %geometry
 \usepackage[a4paper]{geometry}%调整页面边距
-\geometry{left=3cm,right=3cm,top=2.5cm,bottom=3cm}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 \linespread{1.5}
 \usepackage{fancyhdr}%梦幻页眉
 
@@ -87,7 +87,7 @@
 
 % head/foot
 \setlength{\headheight}{15pt}
-\pagestyle{fancy}
+
 \fancyhf{}
 
 
@@ -105,9 +105,9 @@
 \hrule\@height 2.5pt \@width\headwidth\vskip1pt%上面线为2.5pt粗  
 \hrule\@height 0.5pt\@width\headwidth  %下面0.5pt粗            
 \vskip-2\headrulewidth\vskip-1pt}      %两条线的距离        
-\vspace{16mm}}     %双线与下面正文之间的垂直间距              
+\vspace{6mm}}     %双线与下面正文之间的垂直间距              
 \makeatother         
-
+ 
 
 % graphics
 \graphicspath{{figures/}}
@@ -225,7 +225,27 @@
     };
 }%
 }
-                       
+
+%设置标题页面
+
+\newcommand*{\titleGM}{\begingroup % 新命令：添加标题页
+\hbox{ % 水平盒子
+\hspace*{0.2\textwidth} % 左边空白
+\rule{1pt}{\textheight\color{GREY}} % 竖线
+\hspace*{0.05\textwidth} % 竖线和文本距离
+\parbox[b]{0.75\textwidth}{ % 文本最大右边距
+
+{\noindent\Huge\bfseries \LaTeX \\[0.5\baselineskip] - Getting Started}\\[2\baselineskip] % 题目
+{\large \textit{一份\LaTeX 入门手册}}\\[4\baselineskip] % 标签或描述
+{\Large \textsc{丁昊}}\\ % 作者
+
+\vspace{0.5\textheight} % 题目区域和作者间距
+{\noindent Augest 2016 }\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
+
+                      
 \chead{\color{GREY}\LaTeX-GETTINGSTARTED}%页眉
 \cfoot{\color{GREY}Augeust 2016}%页脚 中
 \lfoot{\color{GREY}DingHao}%页脚 左
@@ -233,29 +253,34 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
-
 \usepackage{styles/lshort}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{\vspace{-2em}\LaTeX  - Getting Started\vspace{0.7em}}
-\author{丁昊}%作者
-\date{\vspace{-0.7em}2016年7月\vspace{-0.7em}}%日期
-\maketitle\thispagestyle{fancy}%在上部添加横线
-\newpage
-\tableofcontents
-\newpage
+\titleGM\thispagestyle{empty}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+
+\setcounter{page}{0}
+\newpage
 
 \begin{abstract}
 这篇文档作者写的虽然是我的名字，事实上却是因为我很难把那么多名字统统写进来。首先，本文档后半部分内容主要来源于孙雪，戴嘉伦两位师兄师姐和郑海永老师的《\LaTeX 简短使用手册》。版式的设置部分参照了常琳师姐的文档模板，并采取了崔金娜、谭琳和王超的很多建议。写这篇文档的过程对我也是个挑战，郑老师帮我解决了一系列编写中遇到的问题。且本文的绝大部分实际内容来自于官方编写的《一份不太简短的\LaTeXe 介绍》(后文简称为《介绍》)，所以说我实际上是做了大量整理工作而非原创性工作。\par
 但是到目前为止，上面提到的这些及网上的文档要不太长，要不难以满足翻遍电脑找不到\LaTeX 可执行文件在哪的初学级菜鸟的需求，我尽我最大的努力给予一些我在那个阶段最想要知道的一些信息，尽量的总结至一天可以学会的量，而不再需要你们将一整天又一整天的时间耗费在百度和谷歌上。\par
 最后，我个人的水平着实有限，希望这份文档可以被不断的修改和更新，并以更好的样子服务更多的师弟师妹。
 \end{abstract}
+
 \newpage
+
+\tableofcontents 
+\newpage
+
+\pagestyle{fancy}
+
+\pagenumbering{arabic}
+\newpage
+                      
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
