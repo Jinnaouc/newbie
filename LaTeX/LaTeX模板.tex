@@ -82,12 +82,12 @@
 \usepackage{mdwlist}
 \usepackage{verbatim}%comment命令的注释包
 \usepackage{styles/zhfontcfg}%中文包
-\usepackage{styles/iplouclistings}
-\usepackage{styles/iplouccfg}
+\usepackage{styles/visionouclistings}
+\usepackage{styles/visionouccfg}
 
 % head/foot
 \setlength{\headheight}{15pt}
-\pagestyle{fancy}
+
 \fancyhf{}
 
 
@@ -225,6 +225,26 @@
     };
 }%
 }
+
+%设置标题页面
+
+\newcommand*{\titleGM}{\begingroup % 新命令：添加标题页
+\hbox{ % 水平盒子
+\hspace*{0.2\textwidth} % 左边空白
+\rule{1pt}{\textheight\color{GREY}} % 竖线
+\hspace*{0.05\textwidth} % 竖线和文本距离
+\parbox[b]{0.75\textwidth}{ % 文本最大右边距
+
+{\noindent\Huge\bfseries \LaTeX \\[0.5\baselineskip] 模板}\\[2\baselineskip] % 题目
+{\large \textit{这是一份模板文档}}\\[4\baselineskip] % 标签或描述
+{\Large \textsc{DingHao}}\\ % 作者
+
+\vspace{0.5\textheight} % 题目区域和作者间距
+{\noindent Augest 2016 }\\[\baselineskip] % Publisher and logo
+}}
+\endgroup}
+
+
                       
 \chead{\color{GREY}LATEX-模板}%页眉
 \cfoot{\color{GREY}Augeust 2016}%页脚 中
@@ -237,17 +257,26 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{\vspace{-2em}Latex模板\vspace{0.7em}}
+
 \author{丁昊}%作者
 \date{\vspace{-0.7em}2016年7月\vspace{-0.7em}}%日期
-\maketitle\thispagestyle{fancy}%在上部添加横线
-\newpage
-\tableofcontents 
-\newpage
+\titleGM\thispagestyle{empty}
 
+\pagenumbering{roman}
+
+\setcounter{page}{0}
+\newpage
 \begin{abstract}
 This is an abstract~
 \end{abstract}
+\newpage
+
+\tableofcontents 
+\newpage
+
+\pagestyle{fancy}
+
+\pagenumbering{arabic}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
