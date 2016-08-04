@@ -715,6 +715,16 @@ whereis查找时间短且可以添加参数找相关的数据
 ~~ -print：将结果打印到屏幕上，这是默认操作
 
 从上面介绍find指令的用法可以看出，find是很强大的查找命令，也是我们经常用的。
+\subsubsection{计算某个程序/指令的耗时}
+“time <command> [<arguments...>]” ~~~~我们经常用来计算某个程序或者指令的运行耗时(real)，用户态cpu耗时(user)，系统态cpu耗时（sys）
+
+如图\ref{tu35}所示，描述的是codeblocks这个程序的耗时。
+\begin{figure}[!htb] %插图
+\centering
+\includegraphics[width=0.4\textwidth]{tu35.jpeg}
+\caption{\small time命令显示}
+\label{tu35}
+\end{figure} 
 \subsubsection{vim程序编辑器}
 vim分为三种模式，一般模式、编辑模式、命令行模式，我们一般常用前两种
 
