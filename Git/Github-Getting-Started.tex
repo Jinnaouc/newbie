@@ -350,11 +350,13 @@ Git可以通过四种协议来传输数据：本地传输，SSH协议，Git 协�
 \subsubsection{新建hello文档}
 执行\textbf{touch hello}。
 \subsubsection{在文档中写入内容}
-执行\textbf{vim hello}指令，打开vim编辑界面，在编辑界面输入 Hello! 后，按esc键，输入 :wq（保存退出指令）即可。也可再次在目录终端下输入 vim hello 确认是否编辑成功。
-\subsubsection{查看跟踪状态}
-执行\textbf{git status} 可以看到，此时跟踪状态显示为存在未跟踪的文件。
+执行\textbf{vim hello}指令，打开vim编辑界面，按i,o,a,r(不区分大小写)四个字母在进入编辑界面后输入 Hello! ，按esc键，输入 :wq（保存退出指令）即可。也可再次在目录终端下输入 vim hello 确认是否编辑成功。
+\subsubsection{查看当前文件状态}
+git status 命令可以查看文件在任何时候的状态。执行\textbf{git status} 可以看到，此时跟踪状态显示为存在未跟踪的文件。
 \subsubsection{开始跟踪}
 执行\textbf{git add hello}，执行完此条指令之后，hello便已被跟踪且切换为暂存（staged）状态，正式纳入Git的控制系统。此时可再次使用 git status指令查看。
+
+＊也可以尝试使用\textbf{git add .}和\textbf{git add  *}指令，二者都可自动将当前目录所有修改过的文件跟踪。
 \subsubsection{查看修改文件}
 再次执行\textbf{vim hello}，将其内容改为 hello world! 保存后退出。此时，执行\textbf{git diff}，便可以查看文档的具体修改内容(添加和删除的行)。
 
