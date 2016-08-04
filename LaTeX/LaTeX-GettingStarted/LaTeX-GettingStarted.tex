@@ -27,6 +27,7 @@
 \definecolor{DRED}{RGB}{128,0,0}
 \definecolor{GREY}{RGB}{128,128,128}
 \usepackage[pagecolor={YELLOW}]{pagecolor}%设置页面底色
+%http://www.toolskk.com/color.php
 
 %math
 \usepackage{amsmath,amsfonts,amssymb}
@@ -226,6 +227,38 @@
 }%
 }
 
+%code
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{
+ backgroundcolor=\color{white}, 
+ basicstyle = \footnotesize,       
+ breakatwhitespace = false,        
+ breaklines = true,                 
+ captionpos = b,                    
+ commentstyle = \color{mygreen}\bfseries,
+ extendedchars = false,             
+ frame =shadowbox, 
+ framerule=0.5pt,
+ keepspaces=true,
+ keywordstyle=\color{blue}\bfseries, % keyword style
+ language = C++,                     % the language of code
+ otherkeywords={string}, 
+ numbers=left, 
+ numbersep=5pt,
+ numberstyle=\tiny\color{mygray},
+ rulecolor=\color{black},         
+ showspaces=false,  
+ showstringspaces=false, 
+ showtabs=false,    
+ stepnumber=1,         
+ stringstyle=\color{mymauve},        % string literal style
+ tabsize=2,          
+ title=\lstname                      
+}
+
+
 %设置标题页面
 
 \newcommand*{\titleGM}{\begingroup % 新命令：添加标题页
@@ -246,7 +279,7 @@
 
 
                       
-\chead{\color{GREY}\LaTeX-GETTINGSTARTED}%页眉
+\chead{\color{GREY}\LaTeX-GETTING STARTED}%页眉
 \cfoot{\color{GREY}Augeust 2016}%页脚 中
 \lfoot{\color{GREY}DingHao}%页脚 左
 \rfoot{\color{GREY}$\cdot$\ Page \thepage\ }%页脚 右
@@ -924,6 +957,22 @@ This is my interesting theorem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 \section{代码高亮}
+
+\subsection{C++}
+\begin{lstlisting}[caption={}]
+#include "randomGenerator.h"
+void normalNumGen(double mean, double sd,
+                  int num, string filename){
+	const int nrolls=num; // number of eperiments
+	default_random_engine generator;
+	normal_distribution<double> dnorm(mean, sd);
+	ofstream outfile(filename,ios::out);
+	for(int i=0; i < nrolls; ++i){
+		double number = dnorm(generator);
+		outfile << number << endl;
+	}
+}
+\end{lstlisting}
 
 \subsection{Matlab}
 
