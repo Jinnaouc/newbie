@@ -381,7 +381,7 @@ git status 命令可以查看文件在任何时候的状态。执行\textbf{git 
 ＊执行\textbf{git remote show origin}可以查看origin这个远程仓库的详细信息。
 
 \subsubsection{抓取数据}
-执行\textbf{git fetch origin}，将仓库最新更新的数据抓取到本地，其重要性将在3.4节最后实验室应用部分解释。
+执行\textbf{git fetch origin}，将仓库最新更新的数据抓取到本地，此命令与克隆命令不同，它只到远程仓库拉取所有本地仓库中没有的数据。其重要性将在3.4节最后实验室应用部分解释。
 
 ＊添加远程仓库：在自己的github主页新增一个仓库，git remote add [名称] ［地址］，执行 \textbf{git remote add public git@github.com:Jinnaouc/D.git}，记得改成自己新仓库的地址。其中，public是新仓库的名字，因为原仓库已默认名称为origin，再次添加仓库的时候，必须输入仓库名，并且每次添加的仓库名称不能重复，否则无法添加。仓库添加后，可执行 \textbf{git fetch public}来从新的仓库中抓取数据。
 
