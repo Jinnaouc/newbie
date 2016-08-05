@@ -288,7 +288,7 @@ Git是一种分布式版本控制系统，实验室主要用它来管理文档�
 \label{fig:1}
 \end{figure}
 
-
+\newpage
 \section{设置SSH密钥}
 Git可以通过四种协议来传输数据：本地传输，SSH协议，Git 协议和HTTP协议。下面介绍如何通过SSH协议来使用Git。关于服务器上Git协议的问题，请参考：\url{https://git-scm.com/book/zh/v1/}4.1节，在此不再赘述。SSH（Secure Shell）是建立在应用层和传输层基础上的安全协议，为计算机上的Shell提供安全的传输和使用环境。简言之，SSH负责保护本地仓库和远程仓库之间数据传输时不被截获。
 
@@ -356,7 +356,7 @@ git status 命令可以查看文件在任何时候的状态。执行\textbf{git 
 \subsubsection{开始跟踪}
 执行\textbf{git add hello}，执行完此条指令之后，hello便已被跟踪且切换为暂存（staged）状态，正式纳入Git的控制系统。此时可再次使用 git status指令查看。
 
-＊也可以尝试使用\textbf{git add .}和\textbf{git add  *}指令，二者都可自动将当前目录所有修改过的文件跟踪。
+＊也可以尝试使用\textbf{git add .}和\textbf{git add  *}指令，二者都可自动将当前目录\textbf{所有}修改过的文件跟踪,但有时会有一些自动生成的文件，无需纳入Git的管理，这会将本无需提交的文件也一起纳入Git管理。
 \subsubsection{查看修改文件}
 再次执行\textbf{vim hello}，将其内容改为 hello world! 保存后退出。此时，执行\textbf{git diff}，便可以查看文档的具体修改内容(添加和删除的行)。
 
@@ -381,7 +381,7 @@ git status 命令可以查看文件在任何时候的状态。执行\textbf{git 
 ＊执行\textbf{git remote show origin}可以查看origin这个远程仓库的详细信息。
 
 \subsubsection{抓取数据}
-执行\textbf{git fetch origin}，将仓库最新更新的数据抓取到本地，此命令与克隆命令不同，它只到远程仓库拉取所有本地仓库中没有的数据。其重要性将在3.4节最后实验室应用部分解释。
+执行\textbf{git fetch origin}，将仓库最新更新的数据抓取到本地，\textbf{git pull}此命令与克隆命令不同，它只到远程仓库拉取所有本地仓库中没有的数据。其重要性将在3.4节最后实验室应用部分解释。
 
 ＊添加远程仓库：在自己的github主页新增一个仓库，git remote add [名称] ［地址］，执行 \textbf{git remote add public git@github.com:Jinnaouc/D.git}，记得改成自己新仓库的地址。其中，public是新仓库的名字，因为原仓库已默认名称为origin，再次添加仓库的时候，必须输入仓库名，并且每次添加的仓库名称不能重复，否则无法添加。仓库添加后，可执行 \textbf{git fetch public}来从新的仓库中抓取数据。
 
