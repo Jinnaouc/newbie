@@ -226,6 +226,38 @@
 }%
 }
 
+%code
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{
+ backgroundcolor=\color{white}, 
+ basicstyle = \footnotesize,       
+ breakatwhitespace = false,        
+ breaklines = true,                 
+ captionpos = b,                    
+ commentstyle = \color{mygreen}\bfseries,
+ extendedchars = false,             
+ frame =shadowbox, 
+ framerule=0.5pt,
+ keepspaces=true,
+ keywordstyle=\color{blue}\bfseries, % keyword style
+ language = C++,                     % the language of code
+ otherkeywords={string}, 
+ numbers=left, 
+ numbersep=5pt,
+ numberstyle=\tiny\color{mygray},
+ rulecolor=\color{black},         
+ showspaces=false,  
+ showstringspaces=false, 
+ showtabs=false,    
+ stepnumber=1,         
+ stringstyle=\color{mymauve},        % string literal style
+ tabsize=2,          
+ title=\lstname                      
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %设置标题页面
 
@@ -241,14 +273,14 @@
 {\Large \textsc{DingHao}}\\ % 作者
 
 \vspace{0.5\textheight} % 题目区域和作者间距
-{\noindent Augest 2016 }\\[\baselineskip] % Publisher and logo
+{\noindent August 2016 }\\[\baselineskip] % Publisher and logo
 }}
 \endgroup}
 
 
                       
 \chead{\color{GREY}LATEX-模板}%页眉
-\cfoot{\color{GREY}Augeust 2016}%页脚 中
+\cfoot{\color{GREY}August 2016}%页脚 中
 \lfoot{\color{GREY}DingHao}%页脚 左
 \rfoot{\color{GREY}$\cdot$\ Page \thepage\ }%页脚 右
 \renewcommand{\headrulewidth}{0.4pt}
@@ -267,7 +299,9 @@
 
 \setcounter{page}{0}
 \newpage
+
 \begin{abstract}
+
 This is an abstract~
 \end{abstract}
 \newpage
