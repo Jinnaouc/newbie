@@ -350,6 +350,17 @@ Git可以通过四种协议来传输数据：本地传输，SSH协议，Git 协�
 
 执行 \textbf{git clone git@github.com:Jinnaouc/gittest.git}，记得改成自己的ssh地址。此时，在当前目录下用ls指令查看，便可看到本地目录有了一个名为gittest的文件夹，进入这个文件夹,用ls 命令可查看，此文件夹中只有一个README.md文件。
 
+＊删除仓库：有些仓库我们创建之后，不想要了，比如此次创建的gittest仓库，以后不想让它再留在自己的GitHub中，可将该仓库删除。在自己的GitHub主页上，进入gittest仓库后点击\textbf{Settings}选项（如图5），将该页面拉至最下方，找到\textbf{Delete this repository}，点击后并输入当前仓库名确认后，便可将该仓库删除。
+ \begin{figure}[!htb] %插图
+\centering \includegraphics[width=0.5\textwidth]{fig5.png} \caption{进入仓库设置}
+\label{fig:1}
+\end{figure}
+
+\begin{figure}[!htb] %插图
+\centering \includegraphics[width=0.5\textwidth]{fig6.png} \caption{点击删除仓库}
+\label{fig:1}
+\end{figure}
+
 \subsection{初始化仓库}
 进入gittest文件夹后，在此目录下初始化仓库。执行\textbf{git init} 初始化仓库之后，在当前Git Test目录下，已生成名为.git的隐藏工作目录，通过指令 ls -a 查看，一定要确认.git文件已生成。这一步非常重要，以后所有Git需要的数据和资源都存放在这个目录中。
 
@@ -411,7 +422,7 @@ git status 命令可以查看文件在任何时候的状态。执行\textbf{git 
 
 在对文件进行修改之后，如果要恢复到以前的某个版本，Git 也可以实现。首先执行\textbf{git log}指令，可查看提交历史，每个提交历史commit 之后都有其对应的哈希值（由40个16进制字符0-9及a-f组成），例如1d755b5ce673d582dcff067120b347f47ca6a6c3。选定你要回到哪个版本，复制下该版本的哈希值后退出。git reset 命令有很多参数选项，现只介绍用来恢复历史版本的hard和soft选项。执行\textbf{git reset {-}{-}hard hash},其中，hash 要改为刚刚复制的哈希值。执行完该命令后，已将历史版本恢复。注意：选用hard选项恢复历史版本会删除此版本之后的所有提交更新的版本。恢复之后，要重新更新到远程GitHub上，执行\textbf{git push -f origin master}即可。记住，-f参数意为强制执行，必不可少，此时如果不强制执行，会提示使用git pull命令将远程项目合并到本地，造成混乱。若要恢复单个文件的历史版本，可以执行\textbf{git log filename}来查看文件版本的哈希值，仍使用\textbf{git reset {-}{-}hard hash}
 
-
+\section{实验室Git-GitHub的使用}
 相信你已经学会了如何将本地仓库的文件上传到了自己的github新建的仓库中，接下来对实验室的Git的使用，给大家做一个简单的介绍。实验室的Git网址：\url{https://github.com/zhenglab}，点击进入之后，可以看到，有很多老师创建的仓库，从仓库克隆文件不需要权限，直接执行克隆命令，将你想要的文件克隆到本地即可。若推送数据到仓库，则需要老师授予权限，有了权限之后，才可向仓库中推送数据，push的方式和向自己Git 仓库中push的方式一样。注意，与推送数据到自己的仓库不同的是，向仓库中推送数据的可能不止自己一个人，如果在你推送数据之前，其他人已经推送了若干更新，你的推送将被驳回，必须先把他们的更新抓取到本地，再推送自己的项目，这便是执行4.4.2命令的必要性。总结：向仓库推送数据，首先要获得权限，其次要确保无人更新或已将最新更新抓取到本地。
 
 \section{总结}
