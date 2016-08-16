@@ -249,7 +249,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\title{\vspace{-2em}MAC 系统安装教程\vspace{0.7em}}%大标题
+\title{\vspace{-2em}MAC OS X系统安装教程\vspace{0.7em}}%大标题
 \author{陶虹}%作者
 
 \date{\vspace{-0.7em}2016年8月\vspace{-0.7em}}%日期
@@ -270,7 +270,7 @@
 
 \pagenumbering{arabic}
 \newpage
- \chead{\color{GREY}MAC系统安装教程}%页眉
+ \chead{\color{GREY}MAC OS X 系统安装教程}%页眉
 \cfoot{\color{GREY}August 2016}%页脚 中
 
 \rfoot{\color{GREY}$\cdot$\ Page \thepage\ }%页脚 右
@@ -278,69 +278,80 @@
 \renewcommand{\footrulewidth}{0.4pt}
 %========================================================================================================
 
-\section{在线重装MAC系统}
+\section{在线重装MAC OS X系统}
 \begin{enumerate}
 \item 关闭Mac系统，同时按下组合键 command +R，再按下开关键 ，command +R不能松开
-\item 进入到如下界面后可以松开按键。如图 \ref{chushi} \par
+
+\item 进入到如下界面后可以松开按键。
+如图 \ref{chushi} 
+ 
   \begin{figure}[!htb] %插图
   \centering
   \includegraphics[width=0.8\textwidth]{figures/chushi.jpg}
-  \label{chushi}
-   \caption{初始进入界面}
+    \caption{初始进入界面}
+ \label{chushi}
+
    \end{figure}
 \item 选择要安装的语言，点击继续
 \item 连Wi-Fi，如图 \ref{wifi}
   \begin{figure}[!htb] %插图
   \centering
   \includegraphics[width=0.8\textwidth]{figures/wifi.jpg}
-  \label{wifi}
-  \caption{连接网络}
+ \caption{连接网络}
+ \label{wifi}
+  
   \end{figure}
 \item 如图 \ref{cipangongju}，点击【磁盘工具】
  \begin{figure}[!htb] %插图
  \centering
  \includegraphics[width=0.8\textwidth]{figures/cipangongju.png}
- \label{cipangongju}
- \caption{OS X使用工具}
+  \caption{OS X使用工具}
+\label{cipangongju}
+
  \end{figure}
 \item 点击第二个磁盘（Macintosh HD ），如下图\ref{hd} 鼠标的位置所示；【注意】如果您安装了Windows双系统，那么下图会出现第三个磁盘  （BOOTCAMP盘）这个不用抹掉，没有的话（下图中就没有）和不懂我在说什么的同志看下一步，没事；
  \begin{figure}[!htb] %插图
  \centering
  \includegraphics[width=0.8\textwidth]{figures/hd.png}
- \label{hd}
  \caption{磁盘工具界面}
+\label{hd}
+ 
  \end{figure}
 
 \item 点击第二个磁盘（Macintosh HD ）后，如下图\ref{modiao}，选择中上方的“抹掉”选项卡 ，然后点击右下角的“抹掉…”。【注意】此步骤为格盘，也就是清空电脑的磁盘，把它变为全新空白的，电脑里所有软件和文件都将清空；
  \begin{figure}[!htb] %插图
  \centering
  \includegraphics[width=0.8\textwidth]{figures/modiao.png}
- \label{modiao}
- \caption{格式化磁盘}
+  \caption{格式化磁盘}
+\label{modiao}
+
  \end{figure}
 
 \item 如图\ref{jixu}关闭上面的窗口，选择【重新安装OS X】
  \begin{figure}[!htb] %插图
  \centering
  \includegraphics[width=0.8\textwidth]{figures/cipangongju.png}
- \label{jixu}
- \caption{重新安装OS X}
+ \caption{重新安装OS X} 
+\label{jixu}
+
  \end{figure}
 
 \item 如图\ref{jixuanzhuang}，点击“继续”，后面的不用说了，选择“同意”之类的条款。
  \begin{figure}[!htb] %插图
  \centering
  \includegraphics[width=0.8\textwidth]{figures/jixu.png}
- \label{jixuanzhuang}
  \caption{安装界面}
+\label{jixuanzhuang}
+ 
  \end{figure}
 
 \item 直到到下面这个界面，图\ref{anzhuang}就可以放着去休息了。
  \begin{figure}[!htb] %插图
  \centering
  \includegraphics[width=0.8\textwidth]{figures/anzhuang.png}
- \label{anzhuang}
  \caption{安装界面}
+\label{anzhuang}
+ 
  \end{figure}
 
 \end{enumerate}
@@ -364,7 +375,7 @@
 原贴地址：\url{http://jingyan.baidu.com/article/d71306352bb04713fdf4752a.html}
 
 %========================================================================================================
-\section{用安装盘进行系统安装}
+\section{用安装盘进行MAC OS X系统安装}
 \subsection{制作安装盘}
 
 【准备工作】
@@ -443,14 +454,15 @@ PS:copying installer files to disk.... 需要一点时间出现这样的提示�
 \item Q:哪里有使用命令制作版本？\par
    A:苹果官方网站的链接：\url{https://support.apple.com/zh-cn/HT201372}
 \end{enumerate}
-\subsection{MAC 系统安装}
+\subsection{MAC OS X系统安装}
 \begin{enumerate}
 \item 点击左上角苹果图点，选重新启动，此时按住键盘上的OPTION键不放，等到启动界面中出现盘符选项的时候，用方向键选择刚制作好的U盘；经过几秒的运算，出现OS X实用工具界面，点击最下方的“磁盘工具”，打开磁盘工具，这时候我们要把老的系统格式化，这样装完的系统是全新的，会更干净流畅一点。格式化的方法和第一章介绍的方法一样。
+如图\ref{tu21} 所示。
 \begin{figure}[!htb] %插图
 \centering
-\includegraphics[width=0.4\textwidth]{figures/tu21.png}
-\includegraphics[width=0.4\textwidth]{figures/tu22.png}
-\includegraphics[width=0.4\textwidth]{figures/tu23.png}
+\includegraphics[width=0.5\textwidth]{figures/tu21.png}
+\includegraphics[width=0.5\textwidth]{figures/tu22.png}
+\includegraphics[width=0.5\textwidth]{figures/tu23.png}
 \caption{\small 运行结果}
 \label{tu21}
 \end{figure} 
@@ -458,8 +470,8 @@ PS:copying installer files to disk.... 需要一点时间出现这样的提示�
 如图\ref{tu28}所示。
 \begin{figure}[!htb] %插图
 \centering
-\includegraphics[width=0.4\textwidth]{figures/tu28.png}
-\includegraphics[width=0.4\textwidth]{figures/tu29.png}
+\includegraphics[width=0.5\textwidth]{figures/tu28.png}
+\includegraphics[width=0.5\textwidth]{figures/tu29.png}
 \caption{\small 运行结果}
 \label{tu28}
 \end{figure}
@@ -467,9 +479,9 @@ PS:copying installer files to disk.... 需要一点时间出现这样的提示�
 如图\ref{tu210}所示。
 \begin{figure}[!htb] %插图
 \centering
-\includegraphics[width=0.3\textwidth]{figures/tu210.png}
-\includegraphics[width=0.3\textwidth]{figures/tu211.png}
-\includegraphics[width=0.3\textwidth]{figures/tu212.png}
+\includegraphics[width=0.5\textwidth]{figures/tu210.png}
+\includegraphics[width=0.5\textwidth]{figures/tu211.png}
+\includegraphics[width=0.5\textwidth]{figures/tu212.png}
 \caption{\small 运行结果}
 \label{tu210}
 \end{figure} 
@@ -477,8 +489,8 @@ PS:copying installer files to disk.... 需要一点时间出现这样的提示�
 如图\ref{tu213}所示。
 \begin{figure}[!htb] %插图
 \centering
-\includegraphics[width=0.3\textwidth]{figures/tu213.png}
-\includegraphics[width=0.3\textwidth]{figures/tu214.png}
+\includegraphics[width=0.5\textwidth]{figures/tu213.png}
+\includegraphics[width=0.5\textwidth]{figures/tu214.png}
 \caption{\small 运行结果}
 \label{tu213}
 \end{figure} 
@@ -486,9 +498,9 @@ PS:copying installer files to disk.... 需要一点时间出现这样的提示�
 如图\ref{tu215}所示。
 \begin{figure}[!htb] %插图
 \centering
-\includegraphics[width=0.3\textwidth]{figures/tu215.png}
-\includegraphics[width=0.3\textwidth]{figures/tu216.png}
-\includegraphics[width=0.3\textwidth]{figures/tu217.png}
+\includegraphics[width=0.5\textwidth]{figures/tu215.png}
+\includegraphics[width=0.5\textwidth]{figures/tu216.png}
+\includegraphics[width=0.5\textwidth]{figures/tu217.png}
 \caption{\small 运行结果}
 \label{tu215}
 \end{figure} 
@@ -496,8 +508,8 @@ PS:copying installer files to disk.... 需要一点时间出现这样的提示�
 如图\ref{tu218}所示。
 \begin{figure}[!htb] %插图
 \centering
-\includegraphics[width=0.5\textwidth]{figures/tu218.png}
-\includegraphics[width=0.4\textwidth]{figures/tu219.png}
+\includegraphics[width=0.8\textwidth]{figures/tu218.png}
+\includegraphics[width=0.6\textwidth]{figures/tu219.png}
 \caption{\small 运行结果}
 \label{tu218}
 \end{figure} 
