@@ -1,2 +1,2 @@
-# newbie
-For newbies at ZhengLab of VISION@OUC.
+Forked from Zhenglab newbie repository
+These are manuals of Latex, MacOS, Git-GitHub, Ubuntu for newbies
