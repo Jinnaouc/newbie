@@ -313,6 +313,7 @@ Git可以通过四种协议来传输数据：本地传输，SSH协议，Git 协�
 \subsection{将密钥加载到SSH里}
 执行 \textbf{ssh-add}即可。
 
+＊SSH协议和HTTP协议的区别：通过SSH协议和HTTP协议使用Git，二者下载速度所差无几，在通过SSH协议向GitHub推送内容时，无需输入用户名和密码，而通过HTTP协议则每次推送都需输入帐号和密码。因此，SSH协议更为方便，推荐大家使用。在设置好SSH密钥之后，就可以通过SSH协议来使用Git了。在下面克隆部分将讲到如何切换HTTP协议和SSH协议。
 \newpage
 \section{Git的安装与配置}
 本章的主要内容是：基于Ubuntu 16.04 系统，Git的安装与配置。
@@ -348,7 +349,7 @@ Git可以通过四种协议来传输数据：本地传输，SSH协议，Git 协�
 \label{fig:1}
 \end{figure}
 
-执行 \textbf{git clone git@github.com:Jinnaouc/gittest.git}，记得改成自己的ssh地址。此时，在当前目录下用ls指令查看，便可看到本地目录有了一个名为gittest的文件夹，进入这个文件夹,用ls 命令可查看，此文件夹中只有一个README.md文件。
+执行 \textbf{git clone git@github.com:Jinnaouc/gittest.git}，记得改成自己的ssh地址（注意检查是否时Clone with SSH,如果此时显示的是Clone with HTTPS，点击右上方，蓝色字体：Use SSH来切换）。此时，在当前目录下用ls指令查看，便可看到本地目录有了一个名为gittest的文件夹，进入这个文件夹,用ls 命令可查看，此文件夹中只有一个README.md文件。
 
 ＊删除仓库：如果我们不想让此次创建的gittest仓库继续留在我们的GitHub中，我们可将该仓库删除。在自己的GitHub主页上，进入gittest仓库后点击\textbf{Settings}选项（如图5），将该页面拉至最下方，找到\textbf{Delete this repository}，点击后并输入当前仓库名确认后，便可将该仓库删除。
 
